@@ -351,4 +351,32 @@ nav {
     .nav-links a {
         font-size: 1.2rem; /* ขยายตัวอักษรให้กดง่ายในมือถือ */
     }
+/* --- การตั้งค่าสำหรับหน้าจอคอมพิวเตอร์ (Desktop) --- */
+.nav-right-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.mobile-only-portal {
+    display: none !important; /* ซ่อนไอคอนข้าง Bar เมื่ออยู่ในคอม */
+}
+
+/* --- การตั้งค่าสำหรับหน้าจอมือถือ (Mobile) --- */
+@media (max-width: 768px) {
+    .desktop-only-portal {
+        display: none !important; /* ซ่อนไอคอนที่อยู่ในลิสต์เมนู เมื่ออยู่ในมือถือ */
+    }
+
+    .mobile-only-portal {
+        display: flex !important; /* โชว์ไอคอนข้างปุ่ม Bar เมื่ออยู่ในมือถือ */
+        margin-right: 10px; /* เว้นระยะห่างจากปุ่ม 3 ขีดนิดหน่อย */
+        color: var(--text);
+    }
+
+    .nav-right-group {
+        display: flex;
+        align-items: center;
+    }
+}
 }
