@@ -351,32 +351,63 @@ nav {
     .nav-links a {
         font-size: 1.2rem; /* ขยายตัวอักษรให้กดง่ายในมือถือ */
     }
-/* --- การตั้งค่าสำหรับหน้าจอคอมพิวเตอร์ (Desktop) --- */
-.nav-right-group {
+}
+
+/* จัดกลุ่มขวามือให้เรียงกัน */
+.nav-right-container {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
-.mobile-only-portal {
-    display: none !important; /* ซ่อนไอคอนข้าง Bar เมื่ออยู่ในคอม */
+/* ในหน้าจอคอม: ซ่อน Magic Portal ที่อยู่นอกเมนู (ถ้าคุณยังอยากให้มันอยู่ในลิสต์) */
+/* หรือถ้าเอาตามโครงสร้างใหม่ข้างบน ให้ใส่สไตล์นี้แทน */
+.magic-portal {
+    color: var(--text);
+    display: flex;
+    transition: 0.3s;
 }
 
-/* --- การตั้งค่าสำหรับหน้าจอมือถือ (Mobile) --- */
+.magic-portal:hover {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+/* จัดกลุ่มฝั่งขวาให้เรียงแนวนอนเสมอ */
+.nav-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* ระยะห่างระหว่างไอคอนกับปุ่ม 3 ขีด */
+}
+
+/* เริ่มต้น: ซ่อนไอคอนมือถือเมื่อเปิดในคอม */
+.mobile-portal-icon {
+    display: none !important;
+}
+
+/* --- เมื่อเปิดในมือถือ (จอต่ำกว่า 768px) --- */
 @media (max-width: 768px) {
-    .desktop-only-portal {
-        display: none !important; /* ซ่อนไอคอนที่อยู่ในลิสต์เมนู เมื่ออยู่ในมือถือ */
+    /* ซ่อนไอคอนที่อยู่ในเมนู (ลิสต์) */
+    .desktop-portal-item {
+        display: none !important;
     }
 
-    .mobile-only-portal {
-        display: flex !important; /* โชว์ไอคอนข้างปุ่ม Bar เมื่ออยู่ในมือถือ */
-        margin-right: 10px; /* เว้นระยะห่างจากปุ่ม 3 ขีดนิดหน่อย */
+    /* แสดงไอคอนข้างปุ่ม Bar */
+    .mobile-portal-icon {
+        display: flex !important;
         color: var(--text);
     }
 
-    .nav-right-group {
-        display: flex;
-        align-items: center;
+    /* บังคับให้ปุ่ม 3 ขีดไม่กระโดดบรรทัด */
+    .menu-toggle {
+        display: flex !important;
     }
-}
+
+    /* จัดตำแหน่ง Nav ใหม่ให้ Logo อยู่ซ้าย กลุ่มปุ่มอยู่ขวา */
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 5%;
+    }
 }
